@@ -8,24 +8,25 @@ pipeline {
 
             }
         }
-         stage('docker install') {
+        stage('docker install') {
             steps {
                  sh '''
                  sudo yum install docker -y
                  sudo systemctl start docker
                  sudo systemctl enable docker 
+                 sudo systemctl status docker
                  '''
-                }        
-            }
-            stage('build') {
-            steps {
+            }        
+         }
+         stage('build') {
+             steps {
                 sh '''
                 sudo docker build -t studentui .
                 '''
-            }
+             }
         }
          stage('s3 bucket') {
-            steps {
+             steps {
                 echo 'Uploading Docker image to S3...'
                 sh '''
                 aws s3 cp /var/lib/jenkins/workspace/pipeline/dockerfile s3://neem/honey/dockerfile --region ap-northeast-3
