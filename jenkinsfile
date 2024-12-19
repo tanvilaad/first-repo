@@ -8,7 +8,7 @@ pipeline {
 
             }
         }
-        stage('docker install') {
+        stage('docker-install') {
             steps {
                  sh '''
                  sudo yum install docker -y
@@ -25,7 +25,7 @@ pipeline {
                 '''
              }
         }
-         stage('s3 bucket') {
+         stage('s3-bucket') {
              steps {
                 echo 'Uploading Docker image to S3...'
                 sh '''
