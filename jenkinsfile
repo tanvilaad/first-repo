@@ -29,7 +29,7 @@ pipeline {
              steps {
                 echo 'Uploading Docker image to S3...'
                 sh '''
-                aws s3 cp /var/lib/jenkins/workspace/pipeline/dockerfile s3://ringg/honey/dockerfile --region ap-northeast-3
+                aws s3 cp /var/lib/jenkins/workspace/pipeline/dockerfile s3://ringg/honey/dockerfile --region ap-northeast-1
                 '''
             }
         }
